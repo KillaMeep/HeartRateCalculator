@@ -41,9 +41,9 @@ jobs:
         with:
           script-name: gui_dark.py
           onefile: true
-          include-package: tk
+          enable-plugin: tk-inter
           disable-console: True
-          windows-icon-from-ico: icon.ico
+          windows-icon-from-ico: True
           access-token: ${{ secrets.NUITKA_COMMERCIAL_ACCESS_TOKEN }}
           # macos-create-app-bundle: ${{ runner.os == 'macOS' }}
           
