@@ -1,6 +1,6 @@
 # This is a workflow for testing various Nuitka command-line options
 
-name: Build-All-Platforms
+name: Build-Windows
 
 # Controls when the workflow will run
 on:
@@ -16,15 +16,12 @@ jobs:
   build:
     strategy:
       fail-fast: false
-      matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
       
-    runs-on: ${{ matrix.os }}
+    runs-on: windows-latest
     
     steps:
       # Check-out repository
       - uses: actions/checkout@v3
-
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
@@ -51,8 +48,6 @@ jobs:
       - name: "Upload Artifacts"
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ runner.os }} Build
+          name: windows Build
           path: |
             build/*.exe
-            build/*.bin
-            build/*.app/**/*
